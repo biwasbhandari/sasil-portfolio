@@ -1,101 +1,204 @@
-import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Linkedin, Twitter, Mail, FileText, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
-export default function Home() {
+export default function Portfolio() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="container mx-auto px-4 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ProfileInfo />
+        <About />
+        <Experience />
+        <Education />
+        <Skills />
+        <Interests />
+        <Contact />
+      </div>
     </div>
+  );
+}
+
+function ProfileInfo() {
+  return (
+    <Card className="col-span-1 md:col-span-2 lg:col-span-3">
+      <CardContent className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-4 pt-6">
+        <Avatar className="w-32 h-32 rounded-full overflow-hidden">
+          <AvatarImage
+            src="images/sashil.jpeg"
+            alt="Sashil Baruwal"
+            className="w-full h-full object-cover"
+          />
+          <AvatarFallback>SB</AvatarFallback>
+        </Avatar>
+        <div>
+          <h1 className="text-2xl font-bold">Sashil Baruwal</h1>
+          <p className="text-gray-600">
+            Chief Business Development Officer at{" "}
+            <Link
+              href="https://www.ablino.org"
+              className="text-blue-600 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ablino <ExternalLink className="inline-block w-4 h-4 ml-1" />
+            </Link>
+          </p>
+          <div className="flex flex-wrap gap-2 mt-2">
+            <Badge>IT Student</Badge>
+            <Badge>Entrepreneur</Badge>
+            <Badge>Actor</Badge>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function About() {
+  return (
+    <Card className="col-span-1 md:col-span-2">
+      <CardHeader>
+        <CardTitle>About Me</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>
+          I am a dynamic individual with a passion for both technology and the
+          arts. As an IT student, I am deeply invested in the world of
+          technology and innovation. I balance my academic pursuits with my role
+          as the Chief Business Development Officer at ABLINO, a company I
+          co-founded to drive forward new solutions in the IT sector. Beyond my
+          professional endeavors, I am an enthusiastic trader, a content
+          creator, and an actor who loves storytelling and performance.
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function Experience() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Professional Experience</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <h3 className="text-lg font-semibold mb-2">
+          Chief Business Development Officer, ABLINO
+        </h3>
+        <p>
+          1. Co-founded and currently lead the business development efforts at
+          ABLINO <br /> <br /> 2. Specializing in SaaS development, AI
+          applications, and chatbot creation <br /> <br /> 3. Responsible for
+          strategic growth, client acquisition, and partnership development
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function Education() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Education</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>Pursuing a degree in Information Technology</p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function Skills() {
+  return (
+    <Card className="col-span-1 md:col-span-2">
+      <CardHeader>
+        <CardTitle>Skills and Interests</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-wrap gap-2 mb-4">
+          <Badge>Business Development</Badge>
+          <Badge>Technology Enthusiast</Badge>
+          <Badge>Acting</Badge>
+          <Badge>Content Creation</Badge>
+          <Badge>Trading</Badge>
+          <Badge>Multilingual Communication</Badge>
+        </div>
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            Expertise in identifying growth opportunities and building strategic
+            partnerships
+          </li>
+          <li>
+            Strong interest in software development, artificial intelligence,
+            and emerging IT trends
+          </li>
+          <li>
+            Passionate about acting, creating videos, and exploring storytelling
+            through visual media
+          </li>
+          <li>
+            Actively engaged in trading with a focus on market analysis and
+            investment strategies
+          </li>
+          <li>Proficient in English, Hindi, and Nepali</li>
+        </ul>
+      </CardContent>
+    </Card>
+  );
+}
+
+function Interests() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Interests</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Technology and Innovation</li>
+          <li>Trading and Financial Markets</li>
+          <li>Acting and Filmmaking</li>
+          <li>Continuous Learning and Personal Development</li>
+        </ul>
+      </CardContent>
+    </Card>
+  );
+}
+
+function Contact() {
+  return (
+    <Card className="col-span-1 md:col-span-2 lg:col-span-3">
+      <CardHeader>
+        <CardTitle>Contact</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-wrap gap-2">
+          <Button asChild variant="outline">
+            <Link href="mailto:example@gmail.com">
+              <Mail className="mr-2 h-4 w-4" /> Email
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="https://www.linkedin.com/in/sashil-baruwal-b6b01431a/">
+              <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="https://x.com/sashilchhetri">
+              <Twitter className="mr-2 h-4 w-4" /> Twitter
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="https://medium.com/@Sashil_baruwal">
+              <FileText className="mr-2 h-4 w-4" /> Medium
+            </Link>
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
